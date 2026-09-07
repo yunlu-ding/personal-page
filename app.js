@@ -246,21 +246,91 @@
     const container = make("div", "container");
     container.appendChild(heading(c.eyebrow, c.title, c.subtitle));
 
-    const grid = make("div", "project-grid");
+    const list = make("div", "project-list");
+    const hint = state.lang === "zh"
+      ? "点击缩略图切换主图，点击主图可放大"
+      : "Click a thumbnail to switch; click the main screenshot to enlarge";
+
     c.items.forEach((project) => {
-      const card = make("div", "project-card reveal");
-      card.appendChild(make("span", "project-status", project.status));
-      card.appendChild(make("div", "project-emoji", project.emoji));
-      card.appendChild(make("h3", "project-title", project.title));
-      card.appendChild(make("p", "project-sub", project.subtitle));
-      card.appendChild(make("p", "project-desc", project.desc));
+      const show = make("article", "project-show reveal");
+      const info = make("div", "project-info");
+
+      const head = make("div", "project-head");
+      head.appendChild(make("span", "project-emoji", project.emoji));
+      head.appendChild(make("span", "project-status", project.status));
+      info.appendChild(head);
+
+      info.appendChild(make("h3", "project-title", project.title));
+      info.appendChild(make("p", "project-sub", project.subtitle));
+      info.appendChild(make("p", "project-desc", project.desc));
+
       const tags = make("div", "project-tags");
       project.tags.forEach((tagText) => tags.appendChild(make("span", "tag", tagText)));
-      card.appendChild(tags);
-      grid.appendChild(card);
+      info.appendChild(tags);
+
+      const galleryHint = make("p", "project-hint", hint);
+      info.appendChild(galleryHint);
+
+      const gallery = make("div", "project-gallery");
+      const stage = make("div", "phone-stage");
+      const frame = make("div", "phone-frame");
+
+      const mainImg = document.createElement("img");
+      mainImg.className = "phone-main";
+      mainImg.src = project.images[0].src;
+      mainImg.alt = project.title + " — " + project.images[0].label;
+      mainImg.loading = "lazy";
+      frame.appendChild(mainImg);
+
+      const counter = make("span", "screen-counter", "1 / " + project.images.length);
+      const caption = make("span", "screen-caption", project.images[0].label);
+      stage.appendChild(frame);
+      stage.appendChild(counter);
+      stage.appendChild(caption);
+
+      const thumbs = make("div", "screenshot-thumbs");
+      let current = 0;
+
+      const setMain = (index) => {
+        current = index;
+        const image = project.images[index];
+        mainImg.src = image.src;
+        mainImg.alt = project.title + " — " + image.label;
+        caption.textContent = image.label;
+        counter.textContent = (index + 1) + " / " + project.images.length;
+        Array.prototype.forEach.call(thumbs.children, (thumbBtn, i) => {
+          thumbBtn.classList.toggle("active", i === index);
+        });
+      };
+
+      mainImg.addEventListener("click", () => {
+        openLightbox(project.images, project.title, current);
+      });
+
+      project.images.forEach((image, index) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "thumb-btn";
+        btn.title = image.label;
+        if (index === 0) btn.classList.add("active");
+
+        const thumbImg = document.createElement("img");
+        thumbImg.src = image.src;
+        thumbImg.alt = "";
+        thumbImg.loading = "lazy";
+        btn.appendChild(thumbImg);
+        btn.addEventListener("click", () => setMain(index));
+        thumbs.appendChild(btn);
+      });
+
+      gallery.appendChild(stage);
+      gallery.appendChild(thumbs);
+      show.appendChild(info);
+      show.appendChild(gallery);
+      list.appendChild(show);
     });
 
-    container.appendChild(grid);
+    container.appendChild(list);
     section.appendChild(container);
     return section;
   }
@@ -512,6 +582,105 @@
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       confettiRunning = false;
     }
+  }
+
+  /* ---------- lightbox ---------- */
+
+  let lightboxImages = [];
+  let lightboxIndex = 0;
+  let lightboxTitle = "";
+  let lightboxEl = null;
+
+  function ensureLightbox() {
+    if (lightboxEl) return;
+
+    lightboxEl = make("div", "lightbox");
+    lightboxEl.setAttribute("role", "dialog");
+    lightboxEl.setAttribute("aria-modal", "true");
+    lightboxEl.hidden = true;
+
+    const closeBtn = make("button", "lightbox-btn lightbox-close", "×");
+    closeBtn.type = "button";
+    closeBtn.setAttribute("aria-label", "Close");
+
+    const prevBtn = make("button", "lightbox-btn lightbox-prev", "‹");
+    prevBtn.type = "button";
+    prevBtn.setAttribute("aria-label", "Previous");
+
+    const nextBtn = make("button", "lightbox-btn lightbox-next", "›");
+    nextBtn.type = "button";
+    nextBtn.setAttribute("aria-label", "Next");
+
+    const figure = make("figure", "lightbox-figure");
+    const image = document.createElement("img");
+    image.className = "lightbox-img";
+    image.alt = "";
+    const caption = make("figcaption", "lightbox-caption");
+    figure.appendChild(image);
+    figure.appendChild(caption);
+
+    lightboxEl.appendChild(closeBtn);
+    lightboxEl.appendChild(prevBtn);
+    lightboxEl.appendChild(figure);
+    lightboxEl.appendChild(nextBtn);
+    document.body.appendChild(lightboxEl);
+
+    closeBtn.addEventListener("click", closeLightbox);
+    prevBtn.addEventListener("click", () => stepLightbox(-1));
+    nextBtn.addEventListener("click", () => stepLightbox(1));
+
+    lightboxEl.addEventListener("click", (event) => {
+      if (event.target === lightboxEl) closeLightbox();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (!lightboxEl || lightboxEl.hidden) return;
+      if (event.key === "Escape") closeLightbox();
+      if (event.key === "ArrowLeft") stepLightbox(-1);
+      if (event.key === "ArrowRight") stepLightbox(1);
+    });
+
+    let pointerStartX = null;
+    lightboxEl.addEventListener("pointerdown", (event) => {
+      pointerStartX = event.clientX;
+    });
+    lightboxEl.addEventListener("pointerup", (event) => {
+      if (pointerStartX === null) return;
+      const deltaX = event.clientX - pointerStartX;
+      if (Math.abs(deltaX) > 45) stepLightbox(deltaX < 0 ? 1 : -1);
+      pointerStartX = null;
+    });
+  }
+
+  function updateLightbox() {
+    const image = lightboxImages[lightboxIndex];
+    const img = lightboxEl.querySelector(".lightbox-img");
+    const caption = lightboxEl.querySelector(".lightbox-caption");
+    img.src = image.src;
+    img.alt = lightboxTitle + " — " + image.label;
+    caption.textContent = lightboxTitle + " · " + image.label + "  (" + (lightboxIndex + 1) + " / " + lightboxImages.length + ")";
+  }
+
+  function stepLightbox(delta) {
+    if (!lightboxImages.length) return;
+    lightboxIndex = (lightboxIndex + delta + lightboxImages.length) % lightboxImages.length;
+    updateLightbox();
+  }
+
+  function openLightbox(images, title, index) {
+    ensureLightbox();
+    lightboxImages = images;
+    lightboxTitle = title;
+    lightboxIndex = index;
+    updateLightbox();
+    lightboxEl.hidden = false;
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeLightbox() {
+    if (!lightboxEl) return;
+    lightboxEl.hidden = true;
+    document.body.style.overflow = "";
   }
 
   /* ---------- boot ---------- */

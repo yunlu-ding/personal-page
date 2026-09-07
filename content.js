@@ -142,6 +142,12 @@ const I18N = {
           subtitle: "AI 口语陪聊搭子",
           desc: "源于碎片化练口语缺乏自然对话的痛点，用拟人化角色 + 场景化对话 + 隐性纠错，让英语练习像和朋友聊天一样自然。",
           tags: ["微信小程序", "DeepSeek API", "产品 0→1"],
+          images: [
+            { src: "assets/projects/speakmate-home.png", label: "首页" },
+            { src: "assets/projects/speakmate-practice.png", label: "场景练习" },
+            { src: "assets/projects/speakmate-chat.png", label: "对话页 · 隐性纠错" },
+            { src: "assets/projects/speakmate-history.png", label: "聊天记录" }
+          ],
           status: "体验版",
           link: null
         },
@@ -151,6 +157,11 @@ const I18N = {
           subtitle: "时政日历备考产品",
           desc: "以日历形式日更时政内容并自动生成练习题，搭配错题本与知识点归类，覆盖内容型备考产品从 0 到 1 的完整闭环。",
           tags: ["内容产品", "自动出题", "错题本"],
+          images: [
+            { src: "assets/projects/civicprep-home.png", label: "首页（日历）" },
+            { src: "assets/projects/civicprep-news.png", label: "新闻页" },
+            { src: "assets/projects/civicprep-quiz.png", label: "练习页" }
+          ],
           status: "体验版",
           link: null
         },
@@ -160,6 +171,11 @@ const I18N = {
           subtitle: "主动回忆背诵工具",
           desc: "针对“长文背诵效率低”的痛点，设计大声朗读 + 手绘圈计数 + 看圈主动回忆 + 听录音的完整方法，并完成 PRD、技术探针到 v1。",
           tags: ["主动回忆", "学习工具", "已上线"],
+          images: [
+            { src: "assets/projects/speakout-home.png", label: "首页（导入内容）" },
+            { src: "assets/projects/speakout-read.png", label: "朗读页" },
+            { src: "assets/projects/speakout-recite.png", label: "背诵页" }
+          ],
           status: "已上线",
           link: null
         }
@@ -338,6 +354,12 @@ const I18N = {
           subtitle: "AI speaking companion",
           desc: "Born from the pain of fragmented speaking practice, this WeChat mini-program uses personified AI, scenario dialogues and implicit correction so English practice feels like chatting with a friend.",
           tags: ["WeChat Mini Program", "DeepSeek API", "0→1"],
+          images: [
+            { src: "assets/projects/speakmate-home.png", label: "Home" },
+            { src: "assets/projects/speakmate-practice.png", label: "Scenario practice" },
+            { src: "assets/projects/speakmate-chat.png", label: "Chat · implicit correction" },
+            { src: "assets/projects/speakmate-history.png", label: "Chat history" }
+          ],
           status: "Beta",
           link: null
         },
@@ -347,6 +369,11 @@ const I18N = {
           subtitle: "Current-affairs calendar & exam prep",
           desc: "A calendar-based study tool that refreshes daily news and auto-generates quiz questions, with a mistake notebook organized by knowledge points.",
           tags: ["Content product", "Auto quiz", "Mistake notebook"],
+          images: [
+            { src: "assets/projects/civicprep-home.png", label: "Home (calendar)" },
+            { src: "assets/projects/civicprep-news.png", label: "Daily news" },
+            { src: "assets/projects/civicprep-quiz.png", label: "Quiz" }
+          ],
           status: "Beta",
           link: null
         },
@@ -356,6 +383,11 @@ const I18N = {
           subtitle: "Active-recall memorization tool",
           desc: "For learners who struggle to memorize long passages: read aloud, count circles by hand, recall from circles, listen to yourself — a complete active-recall loop from PRD to v1.",
           tags: ["Active recall", "Learning tool", "Live"],
+          images: [
+            { src: "assets/projects/speakout-home.png", label: "Home (import content)" },
+            { src: "assets/projects/speakout-read.png", label: "Read aloud" },
+            { src: "assets/projects/speakout-recite.png", label: "Recite" }
+          ],
           status: "Live",
           link: null
         }

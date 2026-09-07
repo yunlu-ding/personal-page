@@ -10,6 +10,8 @@ portfolio/
 ├── styles.css        # 全部样式（明亮活泼风格）
 ├── content.js        # 所有中英双语文案（改内容改这里）
 ├── app.js            # 渲染与交互（打字机 / 滚动动画 / 数字滚动 / 彩带）
+├── assets/
+│   └── projects/     # 作品截图（竖版手机截图，文件名 ASCII）
 ├── downloads/
 │   └── Yunlu-Ding-Resume.pdf    # 简历下载文件（最新 PDF）
 └── README.md
@@ -32,6 +34,12 @@ portfolio/
 - 三段实习与教育：`journey.items`
 - 作品卡：`projects.items`
 - 技能与联系：`skills` / `contact`
+
+### 作品截图说明
+
+截图统一放在 `assets/projects/`，建议为 480×1040 左右的竖版手机截图。
+每个作品的截图列表在 `content.js` → `projects.items[].images` 中维护，
+格式为 `{ src: "assets/projects/xxx.png", label: "页面名称" }`。
 
 ## 部署到 GitHub Pages
 
