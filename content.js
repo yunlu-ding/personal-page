@@ -137,6 +137,35 @@ const I18N = {
       subtitle: "从发现问题到写代码上线，都是我独立完成的 0→1。",
       items: [
         {
+          emoji: "🧠",
+          title: "RAG Agent Studio",
+          subtitle: "高可视化知识检索与 Agent 控台",
+          desc: "把知识库从入库到回答的全链路做可视化：支持文件 / 纯文本导入、切分策略与索引重建，可观测 Chunk、调试检索、追踪多轮 Agent 对话与答案来源，前后端链路全部打通。",
+          tags: ["RAG 检索", "Agent 对话", "全链路可观测", "全栈 Demo"],
+          images: [
+            { src: "assets/projects/rag-overview.png", label: "总览看板" },
+            { src: "assets/projects/rag-documents.png", label: "文档管理与索引重建" },
+            { src: "assets/projects/rag-console.png", label: "Agent 对话与来源溯源" }
+          ],
+          frame: "browser",
+          status: "个人作品",
+          link: null
+        },
+        {
+          emoji: "🏨",
+          title: "酒店客服 Agent",
+          subtitle: "酒店订单智能客服",
+          desc: "面向酒店订单场景的智能客服 Agent：以语义缓存和意图路由连接订单查询、退改政策解答、酒店推荐与成本优化；支持多客户画像演示、投诉工单自动生成与人工转接，并保留完整对话上下文。",
+          tags: ["Agent", "意图路由", "语义缓存", "多轮对话"],
+          images: [
+            { src: "assets/projects/hotel-agent-home.png", label: "首页与客户画像" },
+            { src: "assets/projects/hotel-agent-chat.png", label: "对话与工单流转" }
+          ],
+          frame: "browser",
+          status: "个人作品",
+          link: null
+        },
+        {
           emoji: "🗣️",
           title: "SpeakMate",
           subtitle: "AI 口语陪聊搭子",
@@ -348,6 +377,35 @@ const I18N = {
       title: "Products I built myself",
       subtitle: "From spotting the problem to writing code and shipping — each is a personal 0-to-1 loop.",
       items: [
+        {
+          emoji: "🧠",
+          title: "RAG Agent Studio",
+          subtitle: "Visual knowledge retrieval & agent console",
+          desc: "A visually observable RAG pipeline from ingestion to answer: file / plain-text import, chunking strategy and index rebuild, chunk inspection, retrieval debugging, multi-turn agent conversations and source citations — with the full front-end and back-end flow connected.",
+          tags: ["RAG", "Agent", "End-to-end observability", "Full-stack demo"],
+          images: [
+            { src: "assets/projects/rag-overview.png", label: "Overview dashboard" },
+            { src: "assets/projects/rag-documents.png", label: "Documents & index rebuild" },
+            { src: "assets/projects/rag-console.png", label: "Agent chat & citations" }
+          ],
+          frame: "browser",
+          status: "Personal project",
+          link: null
+        },
+        {
+          emoji: "🏨",
+          title: "Hotel Service Agent",
+          subtitle: "AI customer service for hotel orders",
+          desc: "An AI agent for hotel-order support: semantic caching and intent routing connect order lookup, cancellation & change policy Q&A, hotel recommendation and cost optimization; supports multiple customer personas, auto ticket creation, human handoff and full conversation context.",
+          tags: ["Agent", "Intent routing", "Semantic cache", "Multi-turn dialogue"],
+          images: [
+            { src: "assets/projects/hotel-agent-home.png", label: "Home & customer personas" },
+            { src: "assets/projects/hotel-agent-chat.png", label: "Chat & ticket handoff" }
+          ],
+          frame: "browser",
+          status: "Personal project",
+          link: null
+        },
         {
           emoji: "🗣️",
           title: "SpeakMate",

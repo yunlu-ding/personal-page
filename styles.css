@@ -817,6 +817,36 @@ h2.section-title {
   box-shadow: 13px 15px 0 rgba(34, 51, 59, 0.22);
 }
 
+.browser-frame {
+  position: relative;
+  width: 100%;
+  max-width: 540px;
+  background: var(--ink);
+  border: 3px solid var(--ink);
+  border-radius: 18px;
+  padding: 30px 8px 10px;
+  box-shadow: 10px 12px 0 rgba(34, 51, 59, 0.2);
+  transform: rotate(0.5deg);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.browser-frame::before {
+  content: "";
+  position: absolute;
+  top: 11px;
+  left: 14px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--coral);
+  box-shadow: 17px 0 0 var(--sun), 34px 0 0 var(--mint);
+}
+
+.browser-frame:hover {
+  transform: rotate(0deg) translateY(-5px);
+  box-shadow: 13px 15px 0 rgba(34, 51, 59, 0.22);
+}
+
 .phone-main {
   display: block;
   width: 100%;
@@ -825,6 +855,23 @@ h2.section-title {
   cursor: zoom-in;
   background: var(--white);
   user-select: none;
+}
+
+.browser-frame .phone-main {
+  border-radius: 10px;
+}
+
+.project-gallery.browser {
+  width: 100%;
+}
+
+.project-gallery.browser .phone-stage {
+  width: 100%;
+  max-width: 540px;
+}
+
+.project-gallery.browser .thumb-btn {
+  width: 104px;
 }
 
 .screen-counter {
@@ -911,7 +958,7 @@ h2.section-title {
 
 .lightbox-img {
   max-height: 84vh;
-  max-width: min(86vw, 360px);
+  max-width: min(92vw, 1040px);
   width: auto;
   border-radius: 20px;
   box-shadow: 0 18px 60px rgba(0, 0, 0, 0.45);

@@ -271,9 +271,9 @@
       const galleryHint = make("p", "project-hint", hint);
       info.appendChild(galleryHint);
 
-      const gallery = make("div", "project-gallery");
+      const gallery = make("div", project.frame === "browser" ? "project-gallery browser" : "project-gallery");
       const stage = make("div", "phone-stage");
-      const frame = make("div", "phone-frame");
+      const frame = make("div", project.frame === "browser" ? "browser-frame" : "phone-frame");
 
       const mainImg = document.createElement("img");
       mainImg.className = "phone-main";
