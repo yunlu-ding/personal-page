@@ -2,6 +2,7 @@
   "use strict";
 
   const state = { lang: "zh" };
+  const SITE_VERSION = "2026.09.14";
   const app = document.getElementById("app");
   const footer = document.getElementById("footer");
   const navEl = document.getElementById("nav");
@@ -392,7 +393,7 @@
 
   function footerSection() {
     const c = t().contact;
-    footer.textContent = "✦ " + c.footer;
+    footer.textContent = "✦ " + c.footer + "  ·  v" + SITE_VERSION;
   }
 
   function renderNav() {
