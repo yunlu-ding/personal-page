@@ -134,18 +134,19 @@ const I18N = {
     projects: {
       eyebrow: "Side Projects",
       title: "亲手做的产品",
-      subtitle: "从发现问题到写代码上线，都是我独立完成的 0→1。",
+      subtitle: "从发现问题到把产品做出来，都是我独立完成的 0→1。",
       items: [
         {
           emoji: "🧠",
-          title: "RAG Agent Studio",
-          subtitle: "高可视化知识检索与 Agent 控台",
-          desc: "把知识库从入库到回答的全链路做可视化：支持文件 / 纯文本导入、切分策略与索引重建，可观测 Chunk、调试检索、追踪多轮 Agent 对话与答案来源，前后端链路全部打通。",
-          tags: ["RAG 检索", "Agent 对话", "全链路可观测", "全栈 Demo"],
+          title: "CFA 智能备考知识库",
+          subtitle: "RAG 知识库与检索问答台",
+          desc: "面向 CFA 备考场景的 RAG 知识库：支持 PDF / DOCX / MD / TXT 上传与异步解析，默认采用结构感知切分，可在切片管理中查看切片数与残句率；检索侧结合向量路与关键词路，问答会给出结论、可核对的引用原文和明确的拒答阈值，并自动改写追问以承接上下文。",
+          tags: ["RAG 检索", "结构感知切分", "答案引用", "拒答机制"],
           images: [
-            { src: "assets/projects/rag-overview.png", label: "总览看板" },
-            { src: "assets/projects/rag-documents.png", label: "文档管理与索引重建" },
-            { src: "assets/projects/rag-console.png", label: "Agent 对话与来源溯源" }
+            { src: "assets/projects/rag-overview.png", label: "工作台总览" },
+            { src: "assets/projects/rag-upload.png", label: "上传入库" },
+            { src: "assets/projects/rag-chunk.png", label: "切片管理" },
+            { src: "assets/projects/rag-qa.png", label: "问答与引用" }
           ],
           frame: "browser",
           status: "个人作品",
@@ -153,13 +154,13 @@ const I18N = {
         },
         {
           emoji: "🏨",
-          title: "酒店客服 Agent",
-          subtitle: "酒店订单智能客服",
-          desc: "面向酒店订单场景的智能客服 Agent：以语义缓存和意图路由连接订单查询、退改政策解答、酒店推荐与成本优化；支持多客户画像演示、投诉工单自动生成与人工转接，并保留完整对话上下文。",
-          tags: ["Agent", "意图路由", "语义缓存", "多轮对话"],
+          title: "随行管家",
+          subtitle: "酒店住客全旅程智能服务台",
+          desc: "面向酒店住客全旅程的服务台：住客通过与智能管家对话提出需求，系统先用房间号 + 姓氏完成身份确认，再自动生成工单并按类别、优先级和承接部门派发；员工端支持接单、回执、按时闭环与超时升级，对话与工单统一落在本地 PostgreSQL。",
+          tags: ["住客 + 员工双端", "智能工单", "身份鉴权", "SLA 升级"],
           images: [
-            { src: "assets/projects/hotel-agent-home.png", label: "首页与客户画像" },
-            { src: "assets/projects/hotel-agent-chat.png", label: "对话与工单流转" }
+            { src: "assets/projects/butler-guest-chat.png", label: "住客对话与身份确认" },
+            { src: "assets/projects/butler-staff-orders.png", label: "员工接单与工单流转" }
           ],
           frame: "browser",
           status: "个人作品",
@@ -375,18 +376,19 @@ const I18N = {
     projects: {
       eyebrow: "Side Projects",
       title: "Products I built myself",
-      subtitle: "From spotting the problem to writing code and shipping — each is a personal 0-to-1 loop.",
+      subtitle: "From spotting the problem to building the product — each is a personal 0-to-1 loop.",
       items: [
         {
           emoji: "🧠",
-          title: "RAG Agent Studio",
-          subtitle: "Visual knowledge retrieval & agent console",
-          desc: "A visually observable RAG pipeline from ingestion to answer: file / plain-text import, chunking strategy and index rebuild, chunk inspection, retrieval debugging, multi-turn agent conversations and source citations — with the full front-end and back-end flow connected.",
-          tags: ["RAG", "Agent", "End-to-end observability", "Full-stack demo"],
+          title: "CFA Study Knowledge Base",
+          subtitle: "RAG-powered study & Q&A console",
+          desc: "A RAG knowledge base built for CFA exam preparation: PDF / DOCX / MD / TXT upload with async parsing, structure-aware chunking by default with chunk-level quality metrics such as broken-sentence rate, hybrid vector + keyword retrieval, and answers with conclusions, verifiable source citations and an explicit refusal threshold; follow-up questions are rewritten so they remain retrievable.",
+          tags: ["RAG retrieval", "Structure-aware chunking", "Source citations", "Refusal guardrail"],
           images: [
-            { src: "assets/projects/rag-overview.png", label: "Overview dashboard" },
-            { src: "assets/projects/rag-documents.png", label: "Documents & index rebuild" },
-            { src: "assets/projects/rag-console.png", label: "Agent chat & citations" }
+            { src: "assets/projects/rag-overview.png", label: "Workspace overview" },
+            { src: "assets/projects/rag-upload.png", label: "Upload & ingestion" },
+            { src: "assets/projects/rag-chunk.png", label: "Chunk management" },
+            { src: "assets/projects/rag-qa.png", label: "Q&A with citations" }
           ],
           frame: "browser",
           status: "Personal project",
@@ -394,13 +396,13 @@ const I18N = {
         },
         {
           emoji: "🏨",
-          title: "Hotel Service Agent",
-          subtitle: "AI customer service for hotel orders",
-          desc: "An AI agent for hotel-order support: semantic caching and intent routing connect order lookup, cancellation & change policy Q&A, hotel recommendation and cost optimization; supports multiple customer personas, auto ticket creation, human handoff and full conversation context.",
-          tags: ["Agent", "Intent routing", "Semantic cache", "Multi-turn dialogue"],
+          title: "Journey Butler",
+          subtitle: "End-to-end guest service console for hotels",
+          desc: "An in-stay service console for hotels: guests talk to an AI butler, pass room-number + surname identity verification, and requests become tickets routed by category, priority and responsible department; the staff console supports claiming, acknowledgement, on-time closure and overdue escalation, with conversations and tickets stored in local PostgreSQL.",
+          tags: ["Guest + staff console", "Smart ticketing", "Identity guard", "SLA escalation"],
           images: [
-            { src: "assets/projects/hotel-agent-home.png", label: "Home & customer personas" },
-            { src: "assets/projects/hotel-agent-chat.png", label: "Chat & ticket handoff" }
+            { src: "assets/projects/butler-guest-chat.png", label: "Guest chat & identity check" },
+            { src: "assets/projects/butler-staff-orders.png", label: "Staff ticket console" }
           ],
           frame: "browser",
           status: "Personal project",
