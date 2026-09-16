@@ -2,7 +2,7 @@
   "use strict";
 
   const state = { lang: "zh" };
-  const SITE_VERSION = "2026.09.16";
+  const SITE_VERSION = "2026.09.16b";
   const app = document.getElementById("app");
   const footer = document.getElementById("footer");
   const navEl = document.getElementById("nav");
@@ -52,7 +52,7 @@
     const primary = make("a", "btn btn-primary", c.ctaPrimary);
     primary.href = "#journey";
     const download = make("a", "btn", c.ctaSecondary);
-    download.href = "downloads/Yunlu-Ding-Resume.pdf";
+    download.href = "downloads/Yunlu-Ding-Resume.pdf?v=20260916b";
     download.setAttribute("download", "Yunlu-Ding-Resume.pdf");
     actions.appendChild(primary);
     actions.appendChild(download);
@@ -381,7 +381,7 @@
     card.appendChild(links);
 
     const downloadBtn = make("a", "btn btn-primary", c.resumeDocx);
-    downloadBtn.href = "downloads/Yunlu-Ding-Resume.pdf";
+    downloadBtn.href = "downloads/Yunlu-Ding-Resume.pdf?v=20260916b";
     downloadBtn.setAttribute("download", "Yunlu-Ding-Resume.pdf");
     card.appendChild(downloadBtn);
     card.appendChild(make("p", "download-hint", c.downloadHint));
