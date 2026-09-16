@@ -2,7 +2,7 @@
   "use strict";
 
   const state = { lang: "zh" };
-  const SITE_VERSION = "2026.09.16b";
+  const SITE_VERSION = "2026.09.16c";
   const app = document.getElementById("app");
   const footer = document.getElementById("footer");
   const navEl = document.getElementById("nav");
