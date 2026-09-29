@@ -756,6 +756,29 @@ h2.section-title {
   font-weight: 700;
 }
 
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  padding: 9px 16px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: 3px 3px 0 rgba(34, 51, 59, 0.16);
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.project-link:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 rgba(34, 51, 59, 0.18);
+  background: var(--sun-soft);
+}
+
 .project-tags {
   display: flex;
   flex-wrap: wrap;

@@ -64,7 +64,7 @@ portfolio/
 
 ## 后续可选项
 
-- 更新后访问者仍看到旧内容时：把 `index.html` 中三处 `?v=20260916c` 改成新的日期或版本号，再让访问者刷新即可绕过浏览器缓存。
+- 更新后访问者仍看到旧内容时：把 `index.html` 中三处 `?v=20260929` 改成新的日期或版本号，再让访问者刷新即可绕过浏览器缓存。
 - 想换新版 PDF 简历：直接覆盖 `downloads/Yunlu-Ding-Resume.pdf` 即可。
 - 重新生成作品集 PDF：先执行 `npm install pdfkit`，再运行 `node tools/build-portfolio-pdf.js`。
 - 想绑定域名：在 Pages 设置里填自定义域名，并在 DNS 加 CNAME。

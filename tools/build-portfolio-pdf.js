@@ -30,11 +30,12 @@ const C = {
 
 const PROJECTS = [
   {
-    title: "CFA 智能备考知识库",
-    en: "CFA Study Knowledge Base",
-    subtitle: "RAG 知识库与检索问答台",
-    tags: ["RAG 检索", "结构感知切分", "答案引用", "拒答机制"],
-    desc: "面向 CFA 备考场景的 RAG 知识库：支持 PDF / DOCX / MD / TXT 上传与异步解析，默认采用结构感知切分，可在切片管理中查看切片数与残句率；检索侧结合向量路与关键词路，问答会给出结论、可核对的引用原文和明确的拒答阈值。",
+    title: "金融监管法规知识库",
+    en: "Financial Regulatory Knowledge Base",
+    subtitle: "合规 RAG 知识库与检索问答台",
+    tags: ["法规 RAG", "法律语义切分", "引用原文", "拒答机制"],
+    desc: "面向金融监管与合规场景的 RAG 知识库：收录期货和衍生品法、证券法、证券公司监督管理条例、证监会令等法规文件，支持 PDF / DOCX / MD / TXT 上传与异步解析；默认使用法律语义切分并观测切片质量，检索侧结合向量、关键词、融合与重排，答案给出引用原文和明确的拒答阈值。",
+    repo: "https://github.com/yunlu-ding/rag-law-practice",
     accent: C.mint,
     accentSoft: C.mintSoft,
     mode: "landscape",
@@ -49,8 +50,9 @@ const PROJECTS = [
     title: "随行管家",
     en: "Journey Butler",
     subtitle: "酒店住客全旅程智能服务台",
-    tags: ["住客 + 员工双端", "智能工单", "身份鉴权", "SLA 升级"],
+    tags: ["住客端 + 管理台", "智能工单", "身份鉴权", "SLA 升级"],
     desc: "面向酒店住客全旅程的服务台：住客通过与智能管家对话提出需求，系统先用房间号 + 姓氏完成身份确认，再自动生成工单并按类别、优先级和承接部门派发；员工端支持接单、回执、按时闭环与超时升级。",
+    repo: "https://github.com/yunlu-ding/hotel-agent",
     accent: C.coral,
     accentSoft: C.coralSoft,
     mode: "landscape",
@@ -130,7 +132,7 @@ doc.pipe(stream);
 let pageNo = 0;
 
 function addPage(layout) {
-  doc.addPage({ size: "A4", layout });
+  doc.addPage({ size: "A4", layout, margin: 0 });
   pageNo += 1;
   return { w: doc.page.width, h: doc.page.height };
 }
@@ -162,25 +164,26 @@ function cover() {
   doc.fontSize(18).fillColor(C.soft);
   doc.text("Yunlu Ding — Product Portfolio", 60, 170);
 
-  doc.fontSize(13).fillColor(C.soft);
-  doc.text("搜索产品 / 风控产品 / 智能 Agent 产品", 60, 202);
-  doc.text("从发现问题到把产品做出来，每一页都是 0→1 的过程。", 60, 226);
-
   doc.fontSize(11).fillColor(C.ink);
-  doc.text("18800118923@163.com", 60, 286);
-  doc.text("18800118923", 60, 306);
-  doc.text("https://yunlu-ding.github.io/personal-page/", 60, 326);
+  doc.text("18800118923@163.com  ·  18800118923", 60, 212);
+  doc.fillColor(C.soft).fontSize(10.5);
+  doc.text("https://yunlu-ding.github.io/personal-page/", 60, 234);
 
-  const chipY = p.h - 150;
-  const chipW = 132;
-  const gap = 16;
+  doc.moveTo(60, 272).lineTo(p.w - 300, 272).lineWidth(1).strokeColor(C.line).stroke();
+
+  const chipY = p.h - 230;
+  const chipW = 136;
+  const gap = 14;
+  doc.fillColor(C.coral).fontSize(10);
+  doc.text("SELECTED WORKS", 60, chipY - 26, { characterSpacing: 2 });
+
   PROJECTS.forEach((proj, i) => {
     const x = 60 + i * (chipW + gap);
-    doc.roundedRect(x, chipY, chipW, 66, 14).fill(proj.accent);
-    doc.fillColor(proj.accent === C.sun ? C.ink : C.white).fontSize(12);
-    doc.text(proj.title, x + 12, chipY + 14, { width: chipW - 24 });
+    doc.roundedRect(x, chipY, chipW, 92, 16).fill(proj.accent);
+    doc.fillColor(proj.accent === C.sun ? C.ink : C.white).fontSize(11.5);
+    doc.text(proj.title, x + 13, chipY + 18, { width: chipW - 26 });
     doc.fontSize(8.5);
-    doc.text(proj.en, x + 12, chipY + 40, { width: chipW - 24 });
+    doc.text(proj.en, x + 13, chipY + 58, { width: chipW - 26 });
   });
 
   doc.fontSize(10).fillColor(C.soft);
@@ -199,19 +202,22 @@ function contents() {
 
   let running = 3;
   PROJECTS.forEach((proj, i) => {
-    const y = 166 + i * 66;
+    const y = 158 + i * 76;
     const start = running;
-    const end = running + proj.images.length;
-    running = end + 1;
+    running += proj.images.length;
+    const end = running - 1;
 
     doc.roundedRect(58, y - 6, 44, 44, 12).fill(proj.accent);
     doc.fillColor(proj.accent === C.sun ? C.ink : C.white).fontSize(16);
     doc.text(String(i + 1).padStart(2, "0"), 58, y + 6, { width: 44, align: "center" });
 
     doc.fillColor(C.ink).fontSize(17);
-    doc.text(proj.title, 120, y, { width: 420 });
+    doc.text(proj.title, 120, y, { width: 430 });
     doc.fillColor(C.soft).fontSize(10.5);
-    doc.text(proj.en + " · " + proj.subtitle, 120, y + 24, { width: 480 });
+    doc.text(proj.en + " · " + proj.subtitle, 120, y + 24, { width: 470 });
+
+    doc.fillColor("#87979F").fontSize(9.5);
+    doc.text(proj.tags.join("  /  "), 120, y + 44, { width: 470 });
 
     doc.fillColor(C.soft).fontSize(11);
     doc.text("P" + start + " - P" + end, p.w - 190, y + 8, { width: 130, align: "right" });
@@ -271,7 +277,18 @@ function imagePage(proj, image, index) {
   doc.fontSize(10.5);
   doc.text(image.label + "  ·  " + String(index + 1).padStart(2, "0") + "/" + String(proj.images.length).padStart(2, "0"), p.w - 220, 22, { width: 186, align: "right" });
 
-  const top = 92;
+  if (index === 0) {
+    doc.fillColor(C.soft).fontSize(9.5);
+    doc.text(proj.subtitle + "  ·  " + proj.tags.join(" / "), 34, 66, { width: p.w - 68 });
+    if (proj.repo) {
+      const repoText = proj.repo.replace(/^https?:\/\//, "");
+      doc.fillColor(C.coral).fontSize(9);
+      doc.text(repoText, 34, 82, { width: p.w - 68 });
+      doc.link(34, 82, doc.widthOfString(repoText), 11, proj.repo);
+    }
+  }
+
+  const top = index === 0 ? (proj.repo ? 108 : 100) : 92;
   const bottom = p.h - 70;
   const availW = p.w - 92;
   const availH = bottom - top;
@@ -299,11 +316,11 @@ doc.outline.addItem("封面");
 contents();
 doc.outline.addItem("目录");
 
-PROJECTS.forEach((proj, i) => {
-  sectionDivider(proj, i);
-  const sectionOutline = doc.outline.addItem(proj.title);
+PROJECTS.forEach((proj) => {
+  let sectionOutline = null;
   proj.images.forEach((image, j) => {
     imagePage(proj, image, j);
+    if (!sectionOutline) sectionOutline = doc.outline.addItem(proj.title);
     sectionOutline.addItem(image.label);
   });
 });

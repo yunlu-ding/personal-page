@@ -138,10 +138,10 @@ const I18N = {
       items: [
         {
           emoji: "🧠",
-          title: "CFA 智能备考知识库",
-          subtitle: "RAG 知识库与检索问答台",
-          desc: "面向 CFA 备考场景的 RAG 知识库：支持 PDF / DOCX / MD / TXT 上传与异步解析，默认采用结构感知切分，可在切片管理中查看切片数与残句率；检索侧结合向量路与关键词路，问答会给出结论、可核对的引用原文和明确的拒答阈值，并自动改写追问以承接上下文。",
-          tags: ["RAG 检索", "结构感知切分", "答案引用", "拒答机制"],
+          title: "金融监管法规知识库",
+          subtitle: "合规 RAG 知识库与检索问答台",
+          desc: "面向金融监管与合规场景的 RAG 知识库：收录期货和衍生品法、证券法、证券公司监督管理条例、证监会令等法规文件，支持 PDF / DOCX / MD / TXT 上传与异步解析；默认使用法律语义切分并观测切片质量，检索侧结合向量、关键词、融合与重排，答案给出引用原文和明确的拒答阈值，追问会先改写成可独立检索的问题。",
+          tags: ["法规 RAG", "法律语义切分", "引用原文", "拒答机制"],
           images: [
             { src: "assets/projects/rag-overview.png", label: "工作台总览" },
             { src: "assets/projects/rag-upload.png", label: "上传入库" },
@@ -150,21 +150,21 @@ const I18N = {
           ],
           frame: "browser",
           status: "个人作品",
-          link: null
+          link: "https://github.com/yunlu-ding/rag-law-practice"
         },
         {
           emoji: "🏨",
           title: "随行管家",
           subtitle: "酒店住客全旅程智能服务台",
           desc: "面向酒店住客全旅程的服务台：住客通过与智能管家对话提出需求，系统先用房间号 + 姓氏完成身份确认，再自动生成工单并按类别、优先级和承接部门派发；员工端支持接单、回执、按时闭环与超时升级，对话与工单统一落在本地 PostgreSQL。",
-          tags: ["住客 + 员工双端", "智能工单", "身份鉴权", "SLA 升级"],
+          tags: ["住客端 + 管理台", "智能工单", "身份鉴权", "SLA 升级"],
           images: [
             { src: "assets/projects/butler-guest-chat.png", label: "住客对话与身份确认" },
             { src: "assets/projects/butler-staff-orders.png", label: "员工接单与工单流转" }
           ],
           frame: "browser",
           status: "个人作品",
-          link: null
+          link: "https://github.com/yunlu-ding/hotel-agent"
         },
         {
           emoji: "🗣️",
@@ -380,10 +380,10 @@ const I18N = {
       items: [
         {
           emoji: "🧠",
-          title: "CFA Study Knowledge Base",
-          subtitle: "RAG-powered study & Q&A console",
-          desc: "A RAG knowledge base built for CFA exam preparation: PDF / DOCX / MD / TXT upload with async parsing, structure-aware chunking by default with chunk-level quality metrics such as broken-sentence rate, hybrid vector + keyword retrieval, and answers with conclusions, verifiable source citations and an explicit refusal threshold; follow-up questions are rewritten so they remain retrievable.",
-          tags: ["RAG retrieval", "Structure-aware chunking", "Source citations", "Refusal guardrail"],
+          title: "Financial Regulatory Knowledge Base",
+          subtitle: "Compliance RAG knowledge base & Q&A console",
+          desc: "A RAG knowledge base for financial regulation and compliance: it ingests laws and regulatory documents such as the Futures and Derivatives Law, Securities Law, securities-company supervision regulations and CSRC orders, with async PDF / DOCX / MD / TXT parsing; it uses legal-semantic chunking by default, combines vector, keyword, fusion and rerank retrieval, and answers with source citations plus an explicit refusal threshold; follow-up questions are rewritten into standalone retrievable queries.",
+          tags: ["Regulatory RAG", "Legal-semantic chunking", "Source citations", "Refusal guardrail"],
           images: [
             { src: "assets/projects/rag-overview.png", label: "Workspace overview" },
             { src: "assets/projects/rag-upload.png", label: "Upload & ingestion" },
@@ -392,21 +392,21 @@ const I18N = {
           ],
           frame: "browser",
           status: "Personal project",
-          link: null
+          link: "https://github.com/yunlu-ding/rag-law-practice"
         },
         {
           emoji: "🏨",
           title: "Journey Butler",
           subtitle: "End-to-end guest service console for hotels",
           desc: "An in-stay service console for hotels: guests talk to an AI butler, pass room-number + surname identity verification, and requests become tickets routed by category, priority and responsible department; the staff console supports claiming, acknowledgement, on-time closure and overdue escalation, with conversations and tickets stored in local PostgreSQL.",
-          tags: ["Guest + staff console", "Smart ticketing", "Identity guard", "SLA escalation"],
+          tags: ["Guest app + staff console", "Smart ticketing", "Identity guard", "SLA escalation"],
           images: [
             { src: "assets/projects/butler-guest-chat.png", label: "Guest chat & identity check" },
             { src: "assets/projects/butler-staff-orders.png", label: "Staff ticket console" }
           ],
           frame: "browser",
           status: "Personal project",
-          link: null
+          link: "https://github.com/yunlu-ding/hotel-agent"
         },
         {
           emoji: "🗣️",

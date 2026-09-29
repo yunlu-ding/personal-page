@@ -2,7 +2,7 @@
   "use strict";
 
   const state = { lang: "zh" };
-  const SITE_VERSION = "2026.09.16c";
+  const SITE_VERSION = "2026.09.29";
   const app = document.getElementById("app");
   const footer = document.getElementById("footer");
   const navEl = document.getElementById("nav");
@@ -271,6 +271,14 @@
 
       const galleryHint = make("p", "project-hint", hint);
       info.appendChild(galleryHint);
+
+      if (project.link) {
+        const repoLink = make("a", "project-link", state.lang === "zh" ? "查看 GitHub 仓库 →" : "View on GitHub →");
+        repoLink.href = project.link;
+        repoLink.target = "_blank";
+        repoLink.rel = "noopener";
+        info.appendChild(repoLink);
+      }
 
       const gallery = make("div", project.frame === "browser" ? "project-gallery browser" : "project-gallery");
       const stage = make("div", "phone-stage");
